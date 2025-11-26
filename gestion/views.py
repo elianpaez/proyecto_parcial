@@ -51,7 +51,7 @@ def enviar_pdf_por_correo(request, pk):
         subject=f'Reporte de Alumno: {alumno.nombre} {alumno.apellido}',
         body=f'Adjunto encontrará el reporte oficial del alumno {alumno.nombre} {alumno.apellido}.',
         from_email=settings.EMAIL_HOST_USER, 
-        to=['docente@tuuniversidad.com', request.user.email], 
+        to=['elianpaez72@gmail.com', request.user.email], 
     )
 
    
