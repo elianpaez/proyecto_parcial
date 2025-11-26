@@ -1,1 +1,1 @@
-web: gunicorn proyecto_parcial.wsgi:application
+web: bash startup.sh
