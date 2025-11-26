@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="mb-4">Detalle de Alumno</h1>
+    <div class="card shadow-lg p-5">
+        <h2 class="card-title">{{ object.nombre }} {{ object.apellido }}</h2>
+        <hr>
+        <p><strong>Email:</strong> {{ object.email }}</p>
+        <p><strong>Nota Promedio:</strong> {{ object.nota_promedio|default:"N/A" }}</p>
+        <p><strong>Usuario Creador:</strong> {{ object.creado_por.username }}</p>
+
+        <div class="mt-4">
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary">Volver al Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

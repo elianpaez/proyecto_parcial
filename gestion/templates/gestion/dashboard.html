@@ -1,0 +1,50 @@
+{% extends "base.html" %} 
+
+{% block title %}Dashboard de Alumnos{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Dashboard de Alumnos 🧑‍🎓</h1>
+        <a href="{% url 'alumno_create' %}" class="btn btn-success">
+            + Crear Nuevo Alumno
+        </a>
+    </div>
+
+    {% if alumnos %}
+        <div class="table-responsive">
+            <table class="table table-striped table-hover shadow-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nombre Completo</th>
+                        <th>Email</th>
+                        <th>Nota Promedio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for alumno in alumnos %}
+                    <tr>
+                        <td>{{ alumno.nombre }} {{ alumno.apellido }}</td>
+                        <td>{{ alumno.email }}</td>
+                        <td>{{ alumno.nota_promedio }}</td>
+                        <td>
+                            <a href="{% url 'alumno_detail' pk=alumno.pk %}" class="btn btn-sm btn-info me-2">
+                                Ver Detalle
+                            </a>
+                            <a href="{% url 'enviar_pdf_por_correo' alumno.pk %}" class="btn btn-sm btn-primary">
+                                Enviar PDF por Correo 📄
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center" role="alert">
+            Aún no has creado ningún alumno. ¡Usa el botón de arriba para empezar!
+        </div>
+    {% endif %}
+</div>
+{% endblock content %}

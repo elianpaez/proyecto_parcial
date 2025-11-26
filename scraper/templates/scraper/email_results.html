@@ -1,0 +1,22 @@
+<p>Hola {{ user.username }},</p>
+
+<p>Adjunto los resultados de la búsqueda de la palabra clave: <b>{{ palabra_clave }}</b>.</p>
+
+<table border="1" style="width: 100%; border-collapse: collapse;">
+    <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="padding: 8px;">Título</th>
+            <th style="padding: 8px;">URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for resultado in resultados %}
+        <tr>
+            <td style="padding: 8px;">{{ resultado.titulo }}</td>
+            <td style="padding: 8px;"><a href="{{ resultado.url }}">{{ resultado.url }}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<p style="margin-top: 20px;">Saludos,<br>Tu Plataforma de Gestión.</p>
